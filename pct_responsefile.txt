@@ -1,0 +1,362 @@
+################################################################################ 
+# Note: Default Web server Plugins install locations
+# ---------------------------------------- 
+#
+#  Below are the default install locations for each supported operating system.
+# 
+#  AIX:  "/usr/IBM/WebSphere/Plugins"
+#
+#  HP-UX, Linux, and Solaris: "/opt/IBM/WebSphere/Plugins"
+#
+#  Windows: "C:\Program Files\IBM\WebSphere\Plugins"
+#
+#  Note: On unix operating systems, spaces in the install location is not supported.
+################################################################################ 
+
+################################################################################
+#
+# configuration Type
+#
+# Valid Options :       local   WebSphere Application Server and Web server on same machine
+#                       remote  WebSphere Applicaiton Server and Web server on seperate machines.
+#                       local_distributed  Required when the profile on WebSphere Application 
+				Server is federated to a Deployment Manager
+#
+
+configType="local_distributed"
+
+
+################################################################################
+#
+# WAS V8.0 Existing Location
+#
+# Valid Options : Existing WebSphere Application Server Version 8.0 install home directory.
+#
+# Note 	: This option is valid for local install type.
+#         The install will use the directory entered below.  
+#
+
+wasExistingLocation="/opt/IBM/WebSphere/AppServer"
+
+
+################################################################################
+#
+# Web server to configure
+#
+# Valid options	
+#       : ihs           IBM HTTP Server V7.0
+#       : apache22      Apache Web Server V2.2
+#       : domino7       Lotus Domino Web Server V7.0 (not supported on HP-UX, Solaris x64 (x86_64))
+#       : domino8       Lotus Domino Web Server V8.0 (not supported on HP-UX, Solaris x64 (x86_64))
+#       : sunone        Sun Java System Web Server V6.1 or Sun Java System Web Server V7.0
+#       : iis6          Microsoft Internet Information Services V6 (supported on Windows)
+#       : iis7          Microsoft Internet Information Services V7 (supported on Windows)
+
+#
+# Note 	: Specify only one Web server to configure.
+#
+
+webServerSelected="ihs"
+
+
+################################################################################
+#
+# IHS-specific Administrator settings
+#
+################################################################################
+#
+# HTTP Administration Port number
+#
+# Specify the HTTP Administration Port number (only specify value when configuring IHS)
+#
+
+ihsAdminPort="8008"
+
+
+################################################################################
+#
+# IHS Administrator User ID for IHS Administration server
+#
+# Specify the IHS Administrator server userid. (only specify value when configuring IHS)
+#
+
+ihsAdminUserID="ihsadmin"
+
+
+################################################################################
+#
+# IHS Administrator User Group for IHS Administration server
+#
+# Specify the user Group of the IHS administration process started in 
+# case of unix platforms. (only specify value when configuring IHS)
+#
+
+ihsAdminUserGroup="ihsadmins"
+
+
+################################################################################
+#
+# Web server Configuration File 1
+#
+# Valid options for Web server configuration file 1 
+#
+#       ihs         : httpd.conf 
+#       apache      : httpd.conf
+#       domino8     : Notes.jar       (Lotus Domino Web Server V8.0)
+#       domino7     : Notes.jar       (Lotus Domino Web Server V7.0)
+#       sunone      : magnus.conf
+
+#
+#  Note	: File must exist
+#
+
+webServerConfigFile1="/opt/IBM/HTTPServer/conf/httpd.conf"
+
+
+################################################################################
+#
+# Web server Configuration File 2
+#
+# Valid options for Web server configuration file 2
+#
+#       domino8 : names.nsf       (Lotus Domino Web Server V8.0)
+#       domino7 : names.nsf       (Lotus Domino Web Server V7.0)
+#       sunone  : obj.conf
+#		
+# Note	: File must exist
+#
+
+webServerConfigFile2=""
+
+
+################################################################################
+#
+# Web server port number
+#
+# Specify the Web server port for the Web server selected to be configured.
+#
+
+webServerPortNumber="80"
+
+
+################################################################################
+#
+# Domino 7.0/8.0 User ID
+#
+# Specify the Domino 7.0/8.0 User ID. 
+#
+
+dominoUserID="notes"
+
+
+################################################################################
+#
+# Web server Definition Name
+#
+# A web server definition allows for Web server administration through the WebSphere 
+# admin console.  
+#
+#  Note : No spaces are allowed in the Web server definition name.
+#
+
+webServerDefinition="ic5ihs"
+
+
+################################################################################
+#
+# WebSphere Application Server Machine HostName
+#
+# remote install type   : enter the hostname of the WebSphere Application Server machine.
+# local install type    : "" (hostname of target install machine will be used.)
+#
+
+wasMachineHostName=""
+
+
+################################################################################
+#
+#  Advanced User Options available in silent installs only
+#  
+#  Map all the existing deployed applications to the Web server.
+#
+#  Valid Options 
+#           true  :  Web server Definition is mapped as a target to the existing deployed applications such as snoop and hitcount (Recommended)
+#           false :  No applications are mapped to the Web server definition.
+#
+#  Note : If not set to a valid option of true or false, the installer will set to true and continue install.
+# 
+
+mapWebserverToApplications="true"
+
+
+################################################################################
+#
+#  Web server Hostname
+#
+#  In advanced scenarios where a user has multiple Web server hostnames on a machine, set the entry
+#  below to the Web server hostname used to configure.
+#
+#  Valid Options :
+#           ""              :  Install will resolve to hostname detected on machine (Recommended)		  
+#           "<HOSTNAME>"    :  Where <HOSTNAME> is a Web server hostname on the machine.
+#
+
+webServerHostName="ic5.local"
+
+
+################################################################################
+#
+#  Web Server Installation Architecture
+#
+#  Identify the Web server Installation architecture.
+#
+#  Valid Options :
+#           	"32"	:	Valid for 32 bit Web server Installations
+#           	"64"	:   	Valid for 64 bit Web server Installations
+#		""	:	(Architecture of the Web server machine will be used)
+#
+
+webServerInstallArch="64"
+
+
+################################################################################
+#
+# WAS Profile Name
+#
+# Specify the name of the WAS Profile to be configured. This option is only valid
+# in local install scenarios.
+#
+# Valid options:  
+#     "<WAS_profile_name>"  : User must enter the name of an existing WAS profile
+#                             leaving the string empty will result in the installer
+#                             using the default profile
+#                             example.  profileName="AppSrv01"
+#
+
+profileName="AppSrv01"
+
+################################################################################
+#
+# Additional IHS-specific Configuration settings, Tentative
+#
+################################################################################
+#
+# Create a User and Group for the IHS Administrative Server
+#
+# Optionally creates a user and group when configuring the IHS Administrative 
+# Server (only specify value when configuring IHS)
+#
+# Valid options:  
+#                   "true"  : A user and group will be created if neccessary
+#                   "false" : A user and group will not be created
+#
+
+ihsAdminCreateUserAndGroup="true"
+
+################################################################################
+#
+# IHS Administrative Server User ID for Unix
+#
+# The User ID to be used with the IHS Administrative Server on Unix 
+# (only specify value when configuring IHS)
+#
+# Valid options:  
+#    "<IHS_admin_user_ID>"  : User must enter the ID for the IHS Administrative 
+#                             server 
+#                             
+
+ihsAdminUnixUserID="ihsadmin"
+
+################################################################################
+#
+# IHS Administrative Server User Group for Unix
+#
+# The name of the user group that is to be used when configuring the IHS 
+# Administrative Server (only specify value when configuring IHS)
+#
+# Valid options:  
+# "<IHS_admin_user_group>"  : User must enter name of the group that is to be used 
+#
+
+ihsAdminUnixUserGroup="ihsadmins"
+
+################################################################################
+#
+# IHS Administrative Server Password
+#
+# The user password to the IHS Administrative Server to be configured, this will 
+# change to a command line argument in the near future to follow security 
+# guidelines (only specify value when configuring IHS)
+#
+# Valid options:  
+#   "<IHS_admin_password>"  : User must enter the password of the User
+#                             to the IHS administrative Server to be configured
+#                             
+
+ihsAdminPassword="ihsadmin"
+
+#################################################################################
+#
+# Enable IHS Administrative Server Support 
+#
+# Conditional to configure the IHS Administrative Server 
+# (only specify value when configuring IHS)
+#
+#
+# Valid options:  
+#                   "true"  : Support will be enabled and the IHS Administrative
+#                             Server will be configured
+#                  "false"  : Support will not be enabled and IHS Administrative 
+#                             Server will not be configured at this point
+
+enableAdminServerSupport="true"
+
+#################################################################################
+#
+# Enable Configuration using a User ID and password
+#
+# Conditional to enable support in PCT to configure the IHS Administrative Server
+# with a Used ID and password as credentials 
+# (only specify value when configuring IHS)
+#
+#
+# Valid options:  
+#                   "true"  : Support to configure the IHS Administrative Server
+#                             with a given User ID and Password will be enabled.
+#				      The additional, revelvant credentials must be
+#                             supplied.
+#                  "false"  : Support for User ID and Password will not be 
+#                             enabled, no additional values in relation are 
+#                             required
+#
+
+enableUserAndPass="true"
+
+#################################################################################
+#
+# Type of the Webserver to be Configured
+#
+# Similar to webServerSelected, and must remain cohesive,
+# this is a tentative addition. This is also an optional value and can be 
+# ommitted under most circumstances
+#
+# Valid options:  
+#       : IHS           IBM HTTP Server V7.0
+#       : APACHE22      Apache Web Server V2.2
+#       : DOMINO7       Lotus Domino Web Server V7.0 (not supported on HP-UX, Solaris x64 (x86_64))
+#       : DOMINO8       Lotus Domino Web Server V8.0 (not supported on HP-UX, Solaris x64 (x86_64))
+#       : SUNJAVASYSTEM Sun Java System Web Server V6.1 or Sun Java System Web Server V7.0
+#       : IIS6          Microsoft Internet Information Services V6 (supported on Windows)
+#       : IIS7          Microsoft Internet Information Services V7 (supported on Windows)
+#
+
+#
+# Note 	: Specify only one Web server to configure.
+#
+
+webServerType="IHS"
+
+
+
+
+
